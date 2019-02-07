@@ -12,6 +12,7 @@ const fieldsList = [
   'email',
   'phone',
   'amountPaid',
+  'savingsType',
   'paymentDate',
   'narration',
 ];

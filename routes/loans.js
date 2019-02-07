@@ -15,6 +15,11 @@ const fieldsList = [
   'email',
   'phone',
   'amount',
+  'salary',
+  'dueDate',
+  'startDate',
+  'loansPerMonth',
+  'months',
   'loanType',
   'guarantor1',
   'guarantor2',
@@ -50,6 +55,17 @@ router.post('/request', auth, (req, res) => {
     } else {
       sendEmail(loanData.guarantor1, loan.loanId, req.user.name);
       res.json({ status: 201, data: loan });
+    }
+  });
+});
+
+router.get('/schedule', auth, (req, res) => {
+  Loan.findOne({ memberID: req.user.id }, (err, loan) => {
+    if (err) {
+      res.json({ status: 500, message: 'An error occured' });
+    } else {
+      const ret =  _.omit(loan.toObject(), ['_id', '__v', 'userId']);
+      res.json({ status: 200, data: ret });
     }
   });
 });

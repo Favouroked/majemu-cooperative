@@ -73,6 +73,7 @@ router.post('/login', (req, res) => {
           status: 201,
           token,
           name,
+          user,
           role: user.role,
         });
       } else {

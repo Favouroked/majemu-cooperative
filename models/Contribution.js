@@ -7,6 +7,7 @@ const ContributionSchema = new Schema({
   email: String,
   phone: String,
   amountPaid: String,
+  savingsType: String,
   paymentDate: String,
   narration: String,
 });
