@@ -63,13 +63,13 @@ router.post('/login', (req, res) => {
   const loginData = _.pick(req.body, ['memberID']);
   Member.findOne(loginData, async (err, user) => {
     if (err) {
-      res.json({ status: 500, message: 'An error occured' });
+      res.status(500).json({ status: 500, message: 'An error occured' });
     } else {
       const result = await bcrypt.compare(req.body.password, user.password);
       if (result) {
         const name = `${user.surname} ${user.otherNames}`;
         const token = jwt.sign({ name, id: user.memberID, email: user.email }, jwtSecret);
-        res.json({
+        res.status(201).json({
           status: 201,
           token,
           name,
@@ -77,7 +77,7 @@ router.post('/login', (req, res) => {
           role: user.role,
         });
       } else {
-        res.json({ status: 401, message: 'Incorrect login credentials' });
+        res.status(401).json({ status: 401, message: 'Incorrect login credentials' });
       }
     }
   });

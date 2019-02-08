@@ -14,6 +14,7 @@ const fieldsList = [
   'email',
   'phone',
   'dob',
+  'dateJoined',
   'role',
   'accountNo',
   'bankName',

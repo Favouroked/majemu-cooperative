@@ -12,6 +12,7 @@ const MemberSchema = new Schema({
   accountNo: String,
   bankName: String,
   state: String,
+  dateJoined: String,
   homeTown: String,
   contactAddress: String,
   contributionAmount: String,
